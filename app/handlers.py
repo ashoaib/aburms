@@ -3,7 +3,7 @@ import settings
 
 class BaseHandler(tornado.web.RequestHandler):
     def initialize(self):
-        tornado.web.RequestHandler.initialize()
+        tornado.web.RequestHandler.initialize(self)
         settings.SettingsManager.get_app_settings()
 
 
@@ -44,6 +44,5 @@ class HandlerManager:
         # Maybe some code will go here in the future
         pass
 
-    @staticmethod
     def get_handlers(self):
         return self._handlers

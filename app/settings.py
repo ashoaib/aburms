@@ -34,7 +34,7 @@ class SettingsManager:
             self._env = settings[env]
             
             if 'port' in self._env:
-                tornado.options.options['port'] = self._env['port']
+                tornado.options.options.port = self._env['port']
         else:
             raise KeyError("Environment not defined in settings")
 
@@ -43,6 +43,6 @@ class SettingsManager:
         return self._env
     
     @staticmethod
-    def get_app_settings(self):
+    def get_app_settings():
         """Static method for returning site-specific settings dict"""
-        return settings.app
+        return settings['app']

@@ -24,7 +24,7 @@ tornado.options.define("port", default=8888, help="Set port", type=int)
 
 class TornadoApp(tornado.web.Application):
     def __init__(self, env):
-        _handlers = handlers.HandlerManager.get_handlers()
+        _handlers = handlers.HandlerManager().get_handlers()
         _settings = settings.SettingsManager(env).get_settings()
         tornado.web.Application.__init__(self, _handlers, **_settings)
         
