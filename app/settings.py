@@ -42,6 +42,9 @@ class SettingsManager:
             
             if 'port' in self._env:
                 options.port = self._env['port']
+                
+                if ('debug' in self._env) and (self._env['debug']):
+                    print "Running on port " + str(options.port)
         else:
             raise KeyError("Environment not defined in settings")
 
