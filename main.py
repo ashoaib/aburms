@@ -20,7 +20,7 @@ Define port for tornado to listen
 
 This can be set here, or in settings, or at the command line, e.g. -port=8888
 """
-tornado.options.define("port", default=8888, help="Set port", type=int)
+tornado.options.define("port", default=25031, help="Set port", type=int)
 
 class TornadoApp(tornado.web.Application):
     def __init__(self, env):
