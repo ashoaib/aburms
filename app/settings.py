@@ -19,6 +19,13 @@ settings = {
         'static_path': os.path.join(os.path.dirname(__file__), "static"),
         'template_path': os.path.join(os.path.dirname(__file__), "templates"),
         'debug': True
+    },
+    
+    'stage': {
+        'port': 25031,
+        'static_path': os.path.join(os.path.dirname(__file__), "static"),
+        'template_path': os.path.join(os.path.dirname(__file__), "templates"),
+        'debug': True
     }
 }
 
