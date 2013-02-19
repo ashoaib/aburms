@@ -1,5 +1,5 @@
 import os.path
-import tornado.options
+from tornado.options import options
 
 """
 This is the settings dictionary.
@@ -34,7 +34,7 @@ class SettingsManager:
             self._env = settings[env]
             
             if 'port' in self._env:
-                tornado.options.options.port = self._env['port']
+                options.port = self._env['port']
         else:
             raise KeyError("Environment not defined in settings")
 

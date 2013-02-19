@@ -5,11 +5,14 @@ class BaseHandler(tornado.web.RequestHandler):
     def initialize(self):
         tornado.web.RequestHandler.initialize(self)
         settings.SettingsManager.get_app_settings()
+    
+    def write_error(self, status_code, **kwargs):
+        self.write('error occurred')
 
 
 class IndexHandler(BaseHandler):
     def get(self):
-        self.write("index.html")
+        self.write('about')
 
 
 class WorkHandler(BaseHandler):
@@ -26,7 +29,12 @@ class ContactHandler(BaseHandler):
     def get(self):
         self.write('contact');
         
+
+class ErrorHandler(BaseHandler):
+    def get(self):
+        self.write('404')
         
+    
 class HandlerManager:
     """
     HandlerManager class defines handlers for Tornado
@@ -34,10 +42,11 @@ class HandlerManager:
     by the app instance
     """
     _handlers = [
-        (r"/", IndexHandler),
+        (r"/about|/", IndexHandler),
         (r"/work", WorkHandler),
         (r"/stuff", StuffHandler),
-        (r"/contact", ContactHandler)
+        (r"/contact", ContactHandler),
+        (r".*", ErrorHandler)
     ]
     
     def __init__(self):
