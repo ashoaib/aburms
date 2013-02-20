@@ -1,6 +1,5 @@
-import tornado.httpserver
 import tornado.ioloop
-import tornado.options
+import tornado.options 
 import tornado.web
 from app import handlers, settings
 
@@ -31,8 +30,7 @@ class TornadoApp(tornado.web.Application):
 
 def main():
     tornado.options.parse_command_line()
-    http_server = tornado.httpserver.HTTPServer(TornadoApp(tornado.options.options.env))
-    http_server.listen(tornado.options.options.port)
+    TornadoApp(tornado.options.options.env).listen(tornado.options.options.port)
     tornado.ioloop.IOLoop.instance().start()
 
 if __name__ == '__main__':
