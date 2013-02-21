@@ -1,7 +1,7 @@
 import tornado.ioloop
 import tornado.options 
 import tornado.web
-from app import handlers, settings
+from tornado_app import handlers, settings
 
 """
 Define global environment - can be anything that's set in the settings dictionary. Suggested values:
@@ -30,7 +30,8 @@ class TornadoApp(tornado.web.Application):
 
 def main():
     tornado.options.parse_command_line()
-    TornadoApp(tornado.options.options.env).listen(tornado.options.options.port)
+    tornado_app_instance = TornadoApp(tornado.options.options.env)
+    tornado_app_instance.listen(tornado.options.options.port)
     tornado.ioloop.IOLoop.instance().start()
 
 if __name__ == '__main__':

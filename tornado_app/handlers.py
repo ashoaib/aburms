@@ -4,7 +4,7 @@ import settings
 class BaseHandler(tornado.web.RequestHandler):
     def initialize(self):
         tornado.web.RequestHandler.initialize(self)
-        settings.SettingsManager.get_app_settings()
+        self.app_settings = settings.SettingsManager.get_app_settings()
     
     def write_error(self, status_code, **kwargs):
         self.write('error occurred')
