@@ -1,5 +1,8 @@
 from os.path import join, dirname, abspath
 
+root_path = dirname(dirname(abspath(__file__)))
+get_folder_path = lambda f: join(root_path, f)
+
 """
 This is the settings dictionary.
 
@@ -9,22 +12,24 @@ This is the settings dictionary.
 settings = {
     # Site-specific settings
     'app': {
-        'app_name': "abur.ms"
+        'site_name': "abur.ms",
     },
 
     # Environment settings
     'development': {
+        'site_root': 'http://localhost:7186/',
         'port': 7186,
-        'static_path': join(dirname(dirname(abspath(__file__))), "static"),
-        'template_path': join(dirname(dirname(abspath(__file__))), "templates"),
+        'static_path': get_folder_path("static"),
+        'template_path': get_folder_path("templates"),
         'debug': True,
         'gzip': True
     },
     
     'stage': {
+        'site_root': 'http://stage.abur.ms/',
         'port': 25031,
-        'static_path': join(dirname(dirname(abspath(__file__))), "static"),
-        'template_path': join(dirname(dirname(abspath(__file__))), "templates"),
+        'static_path': get_folder_path("static"),
+        'template_path': get_folder_path("templates"),
         'debug': False,
         'gzip': True
     }
