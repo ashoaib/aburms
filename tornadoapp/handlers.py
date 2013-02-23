@@ -7,6 +7,10 @@ class BaseHandler(tornado.web.RequestHandler):
     def site_root(self, sub=''):
         return self.settings['site_root'] + str(sub)
     
+    def render(self, template_name, **kwargs):
+        kwargs['site_root'] = self.site_root
+        tornado.web.RequestHandler.render(self, template_name, **kwargs)
+    
 
 class IndexHandler(BaseHandler):
     def get(self):
