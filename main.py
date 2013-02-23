@@ -36,7 +36,7 @@ def main():
     tornado.options.parse_command_line()
     tornadoapp_instance = TornadoApp(tornado.options.options.env)
     tornadoapp_instance.listen(tornado.options.options.port)
-    print "listening on port:" + tornado.options.options.port
+    print "listening on port:" + str(tornado.options.options.port)
     tornado.ioloop.IOLoop.instance().start()
 
 if __name__ == '__main__':
