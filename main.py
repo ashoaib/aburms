@@ -1,7 +1,7 @@
 import tornado.ioloop
 import tornado.options 
 import tornado.web
-from tornado_app import handlers, settings
+from tornadoapp.config import config_manager
 
 """
 Define global environment - can be anything that's set in the settings dictionary. Suggested values:
@@ -23,15 +23,19 @@ tornado.options.define("port", default=25031, help="Set port", type=int)
 
 class TornadoApp(tornado.web.Application):
     def __init__(self, env):
-        _handlers = handlers.HandlerManager().get_handlers()
-        _settings = settings.SettingsManager(env).get_settings()
+        cm = config_manager.ConfigManager(env)
+        _handlers = cm.get_handlers()
+        _settings = cm.get_settings()
         tornado.web.Application.__init__(self, _handlers, **_settings)
+        
+        if 'port' in _settings:
+            tornado.options.options.port = _settings['port']        
         
 
 def main():
     tornado.options.parse_command_line()
-    tornado_app_instance = TornadoApp(tornado.options.options.env)
-    tornado_app_instance.listen(tornado.options.options.port)
+    tornadoapp_instance = TornadoApp(tornado.options.options.env)
+    tornadoapp_instance.listen(tornado.options.options.port)
     tornado.ioloop.IOLoop.instance().start()
 
 if __name__ == '__main__':
