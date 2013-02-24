@@ -132,10 +132,11 @@ nav {
 	}
 	
 	a.active {
-		color: $_gray;
-		background-color: $_yellow;
-		padding: 5px 10px;
-		border-radius: 40px;
+		/*color: $_gray;
+		background-color: $_yellow;*/
+		color: $_yellow;
+		/*padding: 5px 10px;*/
+		/*border-radius: 40px;*/
 	}
 	
 	ul.external {
@@ -177,24 +178,27 @@ nav {
 }
 
 .contact-section {
-	margin-top: 15px;
+	margin-top: 25px;
 	
 	h3 {
 		font-size: 26px;
 		color: $_yellow;
+		font-weight: 400;
 	}
 	
 	p {
-		font-size: 20px;
+		font-size: 26px;
 	}
 }
 
 #form {
-	$label-size: 20px;
-	$input-size: 16px;
+	$label-size: 22px;
+	$input-size: 18px;
 	
-	margin-top: 5px;
-	margin-left: 15px;
+	margin-top: 15px;
+	padding: 10px;
+	border: 1px dashed $_yellow;
+	/*margin-left: 15px;*/
 	width: 300px;
 	
 	label {
@@ -230,7 +234,7 @@ nav {
 		margin: 0;
 	}
 	
-	input.email {
+	input.email, input.name {
 		font-size: $input-size;
 		color: $_white;
 		font-weight: 100;
@@ -238,15 +242,17 @@ nav {
 	}
 	
 	input.submit {
-		color: $_yellow;
+		background: $_yellow;
+		color: $_gray;
+		padding: 5px;
+		border-radius: 40px;
 		font-weight: 400;
 		font-size: $label-size;
 		cursor: pointer;
-		float: right;
 	}
 }
 
-#email {
+#name, #email {
 	margin-bottom: 10px;
 }
 

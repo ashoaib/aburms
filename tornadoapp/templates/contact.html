@@ -6,7 +6,7 @@
 <p>If you want to learn more about me, approach me for work, or just want to say hello, you can get in touch with me in a couple of ways below.</p>
 <div class="contact-section">
 	<h3>direct email</h3>
-	<p>abu <span class="highlight">dot</span> rm <span class="highlight">dot</span> shoaib <span class="highlight">at</span> google's well known email service</p>
+	<p>abu <span class="highlight">dot</span> rm <span class="highlight">dot</span> shoaib <span class="highlight">at</span> google's well-known email service</p>
 </div>
 <div class="contact-section">
 	<h3>social media</h3>
@@ -17,10 +17,12 @@
 	<p>You can fill out the form below.</p>
 	<div id="form">
 		<form name="contactForm" id="contactForm" action="{{ meta['url'] }}" method="post">
+			<label for="name">name</label>
+			<input class="name" name="name" id="name" type="text" value="your  name">
 			<label for="email">email address</label>
-			<input class="email" name="email" id="email" type="text" value="enter your email address">
+			<input class="email" name="email" id="email" type="text" value="your email address">
 			<label for="message">message</label>
-			<textarea class="message" name="message" id="message">enter your message here</textarea>
+			<textarea class="message" name="message" id="message">your message</textarea>
 			<input type="submit" class="submit" value="send">
 		</form>
 	</div>
