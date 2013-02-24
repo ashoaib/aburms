@@ -1,0 +1,173 @@
+/* Import _reset.scss */
+@import "reset";
+
+
+/*
+ * COMMON VARIABLES
+ */
+
+/* Colours */
+$_yellow: #ffef00;
+$_gray: #666666;
+$_white: #ffffff;
+
+/* Widths */
+$container-width: 1000px;
+$header-height: 200px;
+$nav-width: 376px;
+
+/* Mixins */
+@mixin center-div {
+	position: relative;
+	margin: 0 auto;
+}
+
+
+/*
+ * DESKTOP CSS
+ */
+
+/* main.scss */
+html {
+	font-family: 'Helvetica', 'Arial', sans-serif;
+	background: $_gray;
+}
+
+body.error {
+	h1 {
+		padding: 120px 0 0 0;
+		font-size: 120px;
+		color: $_yellow;
+		font-weight: 700;
+	}
+	
+	h2 {
+		padding-top: 50px;
+		font-size: 60px;
+		color: $_white;
+		font-weight: 100;
+	}
+}
+
+#container {
+	width: $container-width;
+	@include center-div; 
+}
+
+header {
+	width: $container-width;
+	height: $header-height;
+	margin-bottom: 50px;
+} 
+
+#logo {
+	padding: 48px 36px 30px 36px;
+	float: left;
+	height: $header-height - 78px;
+	width: $nav-width - 72px;
+}
+
+$desktop-logo-size: 122px;
+.aburms-logo {
+	color: $_yellow;
+	font-size: 76px;
+	font-weight: 700;
+	line-height: $desktop-logo-size;
+	
+	.aburms-logo-circle {
+		text-align: center;
+		color: $_gray;
+		display: inline-block;
+		background: $_yellow;
+		width: $desktop-logo-size;
+		border-radius: $desktop-logo-size/2;
+		margin-left: 1px;
+	}
+}
+
+.header-title {
+	padding: 128px 14px 0 0;
+	float: left;
+	width: $container-width - ($nav-width + 14px); 
+	height: $header-height - 128px;
+	font-size: 76px;
+	color: $_yellow;
+	font-weight: 700;
+	text-align: right;
+}
+
+nav {
+	width: $nav-width;
+	float: left;
+	
+	a {
+		color: $_white;
+		font-weight: 700;
+		text-decoration: none;
+		
+		&:hover {
+			color: $_yellow;
+		}
+	}
+	
+	ul {
+		li {
+			display: block;
+			text-align: center;
+		}
+	}
+	
+	ul.pages {
+		height: 420px;
+		
+		li {
+			margin-bottom: 40px;
+			
+			a {
+				font-size: 56px;
+			}
+		}
+	}
+	
+	a.active {
+		color: $_gray;
+		background-color: $_yellow;
+		padding: 5px 10px;
+		border-radius: 40px;
+	}
+	
+	ul.external {
+		height: 100px;
+		width: 240px;
+		@include center-div;
+		
+		li {
+			float: left;
+			width: 120px;
+			height: 36px;
+		}
+		
+		a {
+			font-size: 20px;
+		}
+	}
+}
+
+#content {
+	float: right;
+	width: $container-width - $nav-width - (28px);
+	padding: 0 14px 30px 14px;
+	font-size: 24px;
+	color: $_white;
+	font-weight: 100;
+	line-height: 1.5;
+}
+
+footer {
+	width: $nav-width;
+	font-size: 16px;
+	font-weight: 700;
+	color: $_yellow;
+	text-align: center;
+	padding-bottom: 30px;
+}
