@@ -34,6 +34,8 @@ html {
 }
 
 body.error {
+	text-align: center;
+	
 	h1 {
 		padding: 120px 0 0 0;
 		font-size: 120px;
@@ -157,10 +159,21 @@ nav {
 	float: right;
 	width: $container-width - $nav-width - (28px);
 	padding: 0 14px 30px 14px;
-	font-size: 24px;
+	font-size: 26px;
 	color: $_white;
 	font-weight: 100;
 	line-height: 1.5;
+	
+	.highlight {
+		color: $_yellow;
+	}
+	
+	a {
+		font-size: inherit;
+		color: $_yellow;
+		text-decoration: none;
+		border-bottom: 1px dotted $_yellow;
+	}
 }
 
 footer {

@@ -12,7 +12,7 @@
 		<meta property="og:image" content="{{ site_root('static/assets/og.jpg') }}">
 		<meta property="og:description" content="{{ meta['description'] }}">
 		<meta property="og:site_name" content="{{ meta['site_name'] }}">
-		<title>abur.ms</title>
+		<title>{{ meta['title'] }}</title>
 		<link href="{{ static_url('css/main.css') }}" type="text/css" rel="stylesheet">
 		{% end %}
 	</head>
@@ -20,10 +20,18 @@
 		<div id="container">
 			<header>
 				<div id="logo" class="aburms-logo">abur<span class="aburms-logo-circle">ms</span></div>
-				<div class="header-title">{{ header_title }}</div>
+				<div class="header-title">{% block header_title %}hello, i'm abu{% end %}</div>
 			</header>
 			<div id="body">
-				<div id="content">{{ body_content }}</div>
+				<div id="content">
+					{% block content %}
+					I develop websites and web applications.
+<br><br>
+For my day-job, I develop web applications for <a href="http://eu.playstation.com" target="_blank">Sony PlayStation</a>. I also create websites for clients.
+<br><br>
+Find out more about me, or contact me for work using the <span class="highlight">navigation bar</span> or my <span class="highlight">social media</span> profiles.
+					{% end %}
+				</div>
 				<nav>
 					<ul class="pages">
 						<li><a href="/about" {% if active == "about" %}class="active"{% end %}>about</a></li>
@@ -37,7 +45,7 @@
 						<li><a href="http://www.linkedin.com/pub/abu-shoaib/45/208/601" target="_blank">linkedin</a></li>
 						<li><a href="http://www.github.com/ashoaib" target="_blank">github</a></li>
 					</ul>
-					<footer>&copy; 2013 aburms, unless stated otherwise</footer>
+					<footer>&copy; {{ year }} aburms, unless stated otherwise</footer>
 				</nav>
 			</div>
 		</div>

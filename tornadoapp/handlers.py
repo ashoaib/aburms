@@ -1,4 +1,5 @@
 import tornado.web
+from datetime import datetime
 
 class BaseHandler(tornado.web.RequestHandler):
     def write_error(self, status_code, **kwargs):
@@ -9,6 +10,7 @@ class BaseHandler(tornado.web.RequestHandler):
     
     def render(self, template_name, **kwargs):
         kwargs['site_root'] = self.site_root
+        kwargs['year'] = datetime.now().year
         tornado.web.RequestHandler.render(self, template_name, **kwargs)
     
 
@@ -16,13 +18,11 @@ class IndexHandler(BaseHandler):
     def get(self):
         data = dict()
         data['meta'] = {
-            'title': "Abu Raihan M Shoaib",
+            'title': "abur.ms - hello, i'm abu",
             'url': self.site_root(),
             'description': "Personal website of Abu Raihan M Shoaib",
             'site_name': self.settings['site_name']
         }
-        data['header_title'] = "me"
-        data['body_content'] = "Some text about me"
         data['active'] = "about"
         
         self.render('index.html', **data)
@@ -32,48 +32,42 @@ class WorkHandler(BaseHandler):
     def get(self):
         data = dict()
         data['meta'] = {
-            'title': "Abu Raihan M Shoaib",
-            'url': self.site_root(),
-            'description': "Personal website of Abu Raihan M Shoaib",
+            'title': "abur.ms - work i do",
+            'url': self.site_root("work"),
+            'description': "Work done by Abu Raihan M Shoaib",
             'site_name': self.settings['site_name']
         }
-        data['header_title'] = "i do"
-        data['body_content'] = "Some text about the work i do"
         data['active'] = "work"
         
-        self.render('index.html', **data)
+        self.render('work.html', **data)
 
 
 class StuffHandler(BaseHandler):
     def get(self):
         data = dict()
         data['meta'] = {
-            'title': "Abu Raihan M Shoaib",
-            'url': self.site_root(),
-            'description': "Personal website of Abu Raihan M Shoaib",
+            'title': "abur.ms - stuff i like",
+            'url': self.site_root("stuff"),
+            'description': "Stuff liked by Abu Raihan M Shoaib",
             'site_name': self.settings['site_name']
         }
-        data['header_title'] = "i like"
-        data['body_content'] = "Some text about stuff i like"
         data['active'] = "stuff"
         
-        self.render('index.html', **data)
+        self.render('stuff.html', **data)
 
 
 class ContactHandler(BaseHandler):
     def get(self):
         data = dict()
         data['meta'] = {
-            'title': "Abu Raihan M Shoaib",
-            'url': self.site_root(),
-            'description': "Personal website of Abu Raihan M Shoaib",
+            'title': "abur.ms - get in touch",
+            'url': self.site_root("contact"),
+            'description': "Get in touch with Abu Raihan M Shoaib",
             'site_name': self.settings['site_name']
         }
-        data['header_title'] = "form"
-        data['body_content'] = "the contact form"
         data['active'] = "contact"
         
-        self.render('index.html', **data)
+        self.render('contact.html', **data)
         
 
 class ErrorHandler(BaseHandler):
