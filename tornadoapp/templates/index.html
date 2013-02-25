@@ -15,6 +15,12 @@
 		<title>{{ meta['title'] }}</title>
 		<link href="{{ static_url('css/main.css') }}" type="text/css" rel="stylesheet">
 		{% end %}
+		<!-- Fix for IE8 and below -->
+		<script>
+			document.createElement("header");
+			document.createElement("footer");
+			document.createElement("nav");
+		</script>
 	</head>
 	<body>
 		<div id="container">
