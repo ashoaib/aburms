@@ -1,6 +1,8 @@
 import tornado.ioloop
 import tornado.options 
 import tornado.web
+import tornadoapp.mongodb
+
 from tornadoapp.config import config_manager
 
 """
@@ -26,10 +28,19 @@ class TornadoApp(tornado.web.Application):
         cm = config_manager.ConfigManager(env)
         _handlers = cm.get_handlers()
         _settings = cm.get_settings()
-        tornado.web.Application.__init__(self, _handlers, **_settings)
+        
+        if 'db_conf_path' in _settings:
+            self.set_db(_settings['db_conf_path'])
+        else:
+            raise KeyError('db_conf_path not found in settings')
         
         if 'port' in _settings:
-            tornado.options.options.port = _settings['port']        
+            tornado.options.options.port = _settings['port']
+         
+        tornado.web.Application.__init__(self, _handlers, **_settings)
+        
+    def set_db(self, db_conf_path):
+        self.db = tornadoapp.mongodb.MongoDB(db_conf_path)
         
 
 def main():
