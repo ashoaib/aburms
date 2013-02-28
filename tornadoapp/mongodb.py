@@ -10,9 +10,9 @@ This is a wrapper class for pymongo.
 class MongoDB:
     def __init__(self, path_to_conf):
         self._load_config(path_to_conf)
-        self.conn = pymongo.MongoClient(self._config['hostname'], self._config['port'])
-        self.db = self.conn[self._config['dbname']]
-        self.db.authenticate(self._config['username'], self._config['password'])
+        self.conn = pymongo.MongoClient(self.config['hostname'], self.config['port'])
+        self.db = self.conn[self.config['dbname']]
+        self.db.authenticate(self.config['username'], self.config['password'])
         
     def use(self, db_name):
         self.db = self.conn[db_name]
