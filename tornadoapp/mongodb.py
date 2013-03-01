@@ -52,12 +52,4 @@ class MongoDB:
         except ConfigParser.Error:
             raise IOError('Config file not found at ' + conf_path)
         
-#        with open(path_to_conf) as conf_file:
-#            self._config = {key: value for (key, value) in conf_file.readlines().split('=')}
-#        
-#        conf_keys = ['hostname', 'port', 'username', 'password', 'dbname']    
-#        
-#        for k in conf_keys:
-#            if k not in self._config:
-#                raise KeyError(k + ' not in config')
-        
+            
