@@ -1,4 +1,6 @@
 import tornado.web
+import models
+
 from datetime import datetime
 
 class BaseHandler(tornado.web.RequestHandler):
@@ -68,8 +70,17 @@ class ContactHandler(BaseHandler):
         data['active'] = "contact"
         
         self.render('contact.html', **data)
+    
+    def post(self):
+        contact = models.ContactModel()
+        contact.name = self.get_argument('name')
+        contact.email = self.get_argument('email')
+        contact.message = self.get_argument('message')
         
+        self.render('contact.html')
+    
 
 class ErrorHandler(BaseHandler):
     def get(self):
         raise tornado.web.HTTPError(404)
+

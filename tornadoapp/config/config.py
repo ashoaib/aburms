@@ -22,7 +22,8 @@ settings = {
         'static_path': get_folder_path("static"),
         'template_path': get_folder_path("templates"),
         'debug': True,
-        'gzip': True
+        'gzip': True,
+        'db_conf_path': "/Users/armshoaib/Documents/Programming/Projects/aburms/db.conf"
     },
     
     'stage': {
