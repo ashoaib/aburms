@@ -1,5 +1,6 @@
 import ConfigParser
 import pymongo
+import sys
 
 """
 This is a wrapper class for pymongo.
@@ -10,6 +11,9 @@ This is a wrapper class for pymongo.
 class MongoDB:
     def __init__(self, conf_path):
         self._load_config(conf_path)
+        
+        for i in self.config:
+            print i, self.config[i]
         
         try:
             self.conn = pymongo.MongoClient(self.config['hostname'], int(self.config['port']))
