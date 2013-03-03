@@ -34,11 +34,9 @@
 <div class="contact-section">
 	<h3>contact form</h3>
 	<p>You can fill out the form below.</p>
-	{% if thanks %}
-	<p class="thanks">Thanks for getting in touch. I'll get back to you as soon as possible.</p>
-	{% end %}
 	<div id="form">
 		<form name="contactForm" id="contactForm" action="{{ site_root('contact') }}" method="post">
+			{% module xsrf_form_html() %}
 			<label for="name">name{% if errors and ('name' in errors) %} <span class="error">{{ errors['name'] }}</span>{% end %}</label>
 			<input class="name" name="name" id="name" type="text" value="your name">
 			<label for="email">email address{% if errors and ('email' in errors) %} <span class="error">{{ errors['email'] }}</span>{% end %}</label>

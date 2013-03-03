@@ -17,7 +17,7 @@ class BaseHandler(tornado.web.RequestHandler):
     
 
 class IndexHandler(BaseHandler):
-    def get(self):        
+    def get(self):
         self.render('index.html')
 
 
@@ -33,21 +33,19 @@ class StuffHandler(BaseHandler):
 
 class ContactHandler(BaseHandler):
     def get(self):
-        self.render('contact.html', errors=dict(), thanks=False)
+        self.render('contact.html', errors=dict())
     
     def post(self):
-        thanks = False
-        
         contact = models.ContactModel()
         contact.name = self.get_argument('name')
         contact.email = self.get_argument('email')
         contact.message = self.get_argument('message')
         
         if not contact.errors:
-            #self.application.db.put(contact.collection, contact.compile())
-            thanks = True
-        
-        self.render('contact.html', errors=contact.errors, thanks=thanks)
+            write_id = self.application.db.put(contact.collection, contact.compile())
+            self.render('contact_thanks.html', success=(write_id is not None))
+        else:
+            self.render('contact.html', errors=contact.errors)
     
 
 class ErrorHandler(BaseHandler):

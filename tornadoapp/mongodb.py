@@ -29,7 +29,7 @@ class MongoDB:
         try:
             return self.db[collection].find(query)
         except pymongo.errors.PyMongoError:
-            return []
+            return None
     
     def put(self, collection, data=None):
         try:

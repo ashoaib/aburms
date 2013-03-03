@@ -1,0 +1,15 @@
+{% extends contact.html %}
+
+{% block header_title %}
+{% if success %}thanks!{% else %}sorry{% end %}
+{% end %}
+
+{% block content %}
+
+{% if success %}
+<p>Thanks for getting in touch. I'll try and get back to you as soon as I can.</p>
+{% else %}
+<p>Sorry, there was a problem submitting your request. Please try again a bit later.</p>
+{% end %}
+
+{% end %}
