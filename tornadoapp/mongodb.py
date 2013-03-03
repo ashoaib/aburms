@@ -51,7 +51,7 @@ class MongoDB:
         self.db.authenticate(self.config['username'], self.config['password'])
         
     def _load_config(self, conf_path):
-        conf_keys = ['hostname', 'port', 'dbname']
+        conf_keys = ['hostname', 'port', 'dbname', 'username', 'password']
         
         try:
             config = ConfigParser.SafeConfigParser()
