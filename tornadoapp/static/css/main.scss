@@ -189,6 +189,12 @@ nav {
 	p {
 		font-size: 26px;
 	}
+	
+	.thanks {
+		font-size: 22px;
+		margin-top: 10px;
+		color: $_yellow;
+	}
 }
 
 #form {
@@ -198,13 +204,20 @@ nav {
 	margin-top: 15px;
 	padding: 10px;
 	border: 1px dashed $_yellow;
-	width: 300px;
+	width: 346px;
 	
 	label {
 		font-size: $label-size;
 		color: $_yellow;
 		font-weight: 400;
 		display: block;
+		
+		.error {
+			font-size: $label-size - 6px;
+			color: $_white;
+			font-style: italic;
+			border-bottom: 1px dotted $_white;
+		}
 	}
 	
 	input {

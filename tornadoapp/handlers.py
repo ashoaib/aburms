@@ -17,67 +17,37 @@ class BaseHandler(tornado.web.RequestHandler):
     
 
 class IndexHandler(BaseHandler):
-    def get(self):
-        data = dict()
-        data['meta'] = {
-            'title': "abur.ms - hello, i'm abu",
-            'url': self.site_root(),
-            'description': "Personal website of Abu Raihan M Shoaib",
-            'site_name': self.settings['site_name']
-        }
-        data['active'] = "about"
-        
-        self.render('index.html', **data)
+    def get(self):        
+        self.render('index.html')
 
 
 class WorkHandler(BaseHandler):
     def get(self):
-        data = dict()
-        data['meta'] = {
-            'title': "abur.ms - work i do",
-            'url': self.site_root("work"),
-            'description': "Work done by Abu Raihan M Shoaib",
-            'site_name': self.settings['site_name']
-        }
-        data['active'] = "work"
-        
-        self.render('work.html', **data)
+        self.render('work.html')
 
 
 class StuffHandler(BaseHandler):
     def get(self):
-        data = dict()
-        data['meta'] = {
-            'title': "abur.ms - stuff i like",
-            'url': self.site_root("stuff"),
-            'description': "Stuff liked by Abu Raihan M Shoaib",
-            'site_name': self.settings['site_name']
-        }
-        data['active'] = "stuff"
-        
-        self.render('stuff.html', **data)
+        self.render('stuff.html')
 
 
 class ContactHandler(BaseHandler):
     def get(self):
-        data = dict()
-        data['meta'] = {
-            'title': "abur.ms - get in touch",
-            'url': self.site_root("contact"),
-            'description': "Get in touch with Abu Raihan M Shoaib",
-            'site_name': self.settings['site_name']
-        }
-        data['active'] = "contact"
-        
-        self.render('contact.html', **data)
+        self.render('contact.html', errors=dict(), thanks=False)
     
     def post(self):
+        thanks = False
+        
         contact = models.ContactModel()
         contact.name = self.get_argument('name')
         contact.email = self.get_argument('email')
         contact.message = self.get_argument('message')
         
-        self.render('contact.html')
+        if not contact.errors:
+            self.application.db.put(contact.collection, contact.compile())
+            thanks = True
+        
+        self.render('contact.html', errors=contact.errors, thanks=thanks)
     
 
 class ErrorHandler(BaseHandler):

@@ -1,3 +1,22 @@
 {% extends index.html %}
 
+{% block meta %}
+<meta name="description" content="Stuff liked by Abu Raihan M Shoaib">
+<meta name="keywords" content="abu,raihan,shoaib,aburms,web,developer,london,php,html,css,python,tornado">
+<meta property="og:title" content="abur.ms - stuff i like">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ site_root('stuff') }}">
+<meta property="og:image" content="{{ site_root('static/assets/og.jpg') }}">
+<meta property="og:description" content="Stuff liked by Abu Raihan M Shoaib">
+<meta property="og:site_name" content="abur.ms">
+<title>abur.ms - stuff i like</title>
+{% end %}
+
 {% block header_title %}stuff i like{% end %}
+
+{% block nav %}
+<li><a href="/about">about</a></li>
+<li><a href="/work">work</a></li>
+<li><a href="/stuff" class="active">stuff</a></li>
+<li><a href="/contact">contact</a></li>
+{% end %}

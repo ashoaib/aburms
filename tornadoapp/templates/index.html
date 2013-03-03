@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		{% block head %}
 		<meta charset="utf-8">
 		<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> -->
-		<meta name="description" content="{{ meta['description'] }}">
+		{% block meta %}
+		<meta name="description" content="Personal website of Abu Raihan M Shoaib">
 		<meta name="keywords" content="abu,raihan,shoaib,aburms,web,developer,london,php,html,css,python,tornado">
-		<meta property="og:title" content="{{ meta['title'] }}">
+		<meta property="og:title" content="abur.ms - hello, i'm abu">
 		<meta property="og:type" content="website">
-		<meta property="og:url" content="{{ meta['url'] }}">
+		<meta property="og:url" content="{{ site_root() }}">
 		<meta property="og:image" content="{{ site_root('static/assets/og.jpg') }}">
-		<meta property="og:description" content="{{ meta['description'] }}">
-		<meta property="og:site_name" content="{{ meta['site_name'] }}">
-		<title>{{ meta['title'] }}</title>
-		<link href="{{ static_url('css/main.css') }}" type="text/css" rel="stylesheet">
+		<meta property="og:description" content="Personal website of Abu Raihan M Shoaib">
+		<meta property="og:site_name" content="abur.ms">
+		<title>abur.ms - hello, i'm abu</title>
 		{% end %}
+		<link href="{{ static_url('css/main.css') }}" type="text/css" rel="stylesheet">
 		<!-- Fix for IE8 and below -->
 		<script>
 			document.createElement("header");
@@ -40,10 +40,12 @@ Find out more about me, or contact me for work using the <span class="highlight"
 				</div>
 				<nav>
 					<ul class="pages">
-						<li><a href="/about" {% if active == "about" %}class="active"{% end %}>about</a></li>
-						<li><a href="/work" {% if active == "work" %}class="active"{% end %}>work</a></li>
-						<li><a href="/stuff" {% if active == "stuff" %}class="active"{% end %}>stuff</a></li>
-						<li><a href="/contact" {% if active == "contact" %}class="active"{% end %}>contact</a></li>
+						{% block nav %}
+						<li><a href="/about" class="active">about</a></li>
+						<li><a href="/work">work</a></li>
+						<li><a href="/stuff">stuff</a></li>
+						<li><a href="/contact">contact</a></li>
+						{% end %}
 					</ul>
 					<ul class="external">
 						<li><a href="http://www.facebook.com/abu.shoaib" target="_blank">facebook</a></li>

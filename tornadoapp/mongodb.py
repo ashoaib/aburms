@@ -25,14 +25,17 @@ class MongoDB:
     def use(self, db_name):
         self.db = self.conn[db_name]
         
-    def get(self, model):
+    def get(self, collection, query=dict()):
         try:
-            return self.db[model.collection].find(model.compile())
+            return self.db[collection].find(query)
         except pymongo.errors.PyMongoError:
             return []
     
     def put(self, collection, data=None):
-        pass
+        try:
+            return self.db[collection].save(data)
+        except pymongo.errors.PyMongoError:
+            return None
     
     def update(self, collection, query=dict(), data=None):
         pass

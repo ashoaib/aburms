@@ -1,6 +1,25 @@
 {% extends index.html %}
 
+{% block meta %}
+<meta name="description" content="Get in touch with Abu Raihan M Shoaib">
+<meta name="keywords" content="abu,raihan,shoaib,aburms,web,developer,london,php,html,css,python,tornado">
+<meta property="og:title" content="abur.ms - get in touch">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ site_root('contact') }}">
+<meta property="og:image" content="{{ site_root('static/assets/og.jpg') }}">
+<meta property="og:description" content="Get in touch with Abu Raihan M Shoaib">
+<meta property="og:site_name" content="abur.ms">
+<title>abur.ms - get in touch</title>
+{% end %}
+
 {% block header_title %}get in touch{% end %}
+
+{% block nav %}
+<li><a href="/about">about</a></li>
+<li><a href="/work">work</a></li>
+<li><a href="/stuff">stuff</a></li>
+<li><a href="/contact" class="active">contact</a></li>
+{% end %}
 
 {% block content %}
 <p>If you want to learn more about me, approach me for work, or just want to say hello, you can get in touch with me in a couple of ways below.</p>
@@ -15,13 +34,16 @@
 <div class="contact-section">
 	<h3>contact form</h3>
 	<p>You can fill out the form below.</p>
+	{% if thanks %}
+	<p class="thanks">Thanks for getting in touch. I'll get back to you as soon as possible.</p>
+	{% end %}
 	<div id="form">
-		<form name="contactForm" id="contactForm" action="{{ meta['url'] }}" method="post">
-			<label for="name">name</label>
+		<form name="contactForm" id="contactForm" action="{{ site_root('contact') }}" method="post">
+			<label for="name">name{% if errors and ('name' in errors) %} <span class="error">{{ errors['name'] }}</span>{% end %}</label>
 			<input class="name" name="name" id="name" type="text" value="your name">
-			<label for="email">email address</label>
+			<label for="email">email address{% if errors and ('email' in errors) %} <span class="error">{{ errors['email'] }}</span>{% end %}</label>
 			<input class="email" name="email" id="email" type="text" value="your email address">
-			<label for="message">message</label>
+			<label for="message">message{% if errors and ('message' in errors) %} <span class="error">{{ errors['message'] }}</span>{% end %}</label>
 			<textarea class="message" name="message" id="message">your message</textarea>
 			<input type="submit" class="submit" value="send">
 		</form>
