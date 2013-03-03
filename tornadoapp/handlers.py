@@ -44,7 +44,7 @@ class ContactHandler(BaseHandler):
         contact.message = self.get_argument('message')
         
         if not contact.errors:
-            self.application.db.put(contact.collection, contact.compile())
+            #self.application.db.put(contact.collection, contact.compile())
             thanks = True
         
         self.render('contact.html', errors=contact.errors, thanks=thanks)
