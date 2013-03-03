@@ -32,6 +32,7 @@ settings = {
         'static_path': get_folder_path("static"),
         'template_path': get_folder_path("templates"),
         'debug': False,
-        'gzip': True
+        'gzip': True,
+        'db_conf_path': "/home/aburms/etc/aburms_stage_db.conf"
     }
 }
