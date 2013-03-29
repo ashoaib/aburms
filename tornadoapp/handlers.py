@@ -49,8 +49,22 @@ class ContactHandler(BaseHandler):
     
 
 class AdminHandler(BaseHandler):
+    @tornado.web.authenticated
     def get(self):
-        self.write('admin')
+        self.write('hello admin')
+    
+    def get_current_user(self):
+        return True
+        
+        
+class AdminLoginHandler(BaseHandler):
+    def get(self):
+        self.write('login')
+        
+        
+class AdminLogoutHandler(BaseHandler):
+    def get(self):
+        self.write('logout')
 
 
 class ErrorHandler(BaseHandler):

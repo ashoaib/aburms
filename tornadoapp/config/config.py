@@ -16,6 +16,7 @@ settings = {
     # Site-specific settings
     'app': {
         'site_name': "abur.ms",
+        'login_url': "/admin/login"
     },
 
     # Environment settings
