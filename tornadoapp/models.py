@@ -15,9 +15,11 @@ error_strings = {
 
 class BaseModel(object):
     def __init__(self):
+        self._compiled = {}
+        self._errors = {}
         self._timestamp = str(datetime.datetime.now())
         self._collection = str(self.__class__.__name__[:-5]).lower()
-        self._errors = {}
+        self._compiled['collection'] = self._collection
         
     def set_field(self, field_name, field_type, value):
         if hasattr(self, "_"+field_name):
@@ -34,7 +36,11 @@ class BaseModel(object):
             return False
         
     def compile(self):
-        return {}
+        return self._compiled
+    
+    @property
+    def timestamp(self):
+        return self._timestamp
             
     @property
     def collection(self):
@@ -51,13 +57,13 @@ class ContactModel(BaseModel):
     _message = None
     
     def compile(self):
-        doc = {
+        self._compiled['document'] = {
             'name': self._name,
             'email': self._email,
             'message': self._message,
             'date_created': self._timestamp
         }
-        return doc
+        return self._compiled
     
     @property
     def name(self):
@@ -89,12 +95,12 @@ class PostModel(BaseModel):
     _content = None
     
     def compile(self):
-        doc = {
+        self._compiled['document'] = {
             'title': self._title,
             'content': self._content,
             'date_created': self._timestamp
         }
-        return doc
+        return self._compiled
     
     @property
     def title(self):

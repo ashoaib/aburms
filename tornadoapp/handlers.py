@@ -42,11 +42,16 @@ class ContactHandler(BaseHandler):
         contact.message = self.get_argument('message')
         
         if not contact.errors:
-            write_id = self.application.db.put(contact.collection, contact.compile())
+            write_id = self.application.db.put(**contact.compile())
             self.render('contact_thanks.html', success=(write_id is not None))
         else:
             self.render('contact.html', errors=contact.errors)
     
+
+class AdminHandler(BaseHandler):
+    def get(self):
+        self.write('admin')
+
 
 class ErrorHandler(BaseHandler):
     def get(self):
