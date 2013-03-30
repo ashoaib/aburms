@@ -13,5 +13,5 @@ To be updated with more...
 ```
 tornado
 pymongo
-python-pbkdf2
+py-bcrypt
 ```
