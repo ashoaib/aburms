@@ -1,2 +1,2 @@
-def passhash(password):
+def hash_password(password):
     return password

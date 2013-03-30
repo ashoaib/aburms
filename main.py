@@ -6,7 +6,8 @@ import tornadoapp.mongodb
 from tornadoapp.config import config_manager
 
 """
-Define global environment - can be anything that's set in the settings dictionary. Suggested values:
+Define global environment - can be anything that's set in the settings
+dictionary. Suggested values:
     development
     testing
     stage
@@ -24,6 +25,11 @@ This can be set here, or in settings, or at the command line, e.g. -port=8888
 tornado.options.define("port", default=25031, help="Set port", type=int)
 
 class TornadoApp(tornado.web.Application):
+    """
+    The main application class. It uses the ConfigManager to retrieve handlers
+    and application settings to pass to the application instance.
+    """
+    
     def __init__(self, env):
         cm = config_manager.ConfigManager(env)
         _handlers = cm.get_handlers()

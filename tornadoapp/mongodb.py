@@ -1,13 +1,15 @@
 import ConfigParser
 import pymongo
 
-"""
-This is a wrapper class for pymongo.
-
-- It reads a .conf file from a path specified in site settings and sets config e.g. hostname, port etc.
-- Has methods like get, put to wrap around pymongo functions
-"""
 class MongoDB:
+    """
+    This is a wrapper class for pymongo.
+    
+    - It reads a .conf file from a path specified in site settings and sets
+      config e.g. hostname, port etc.
+    - Has methods like get, put to wrap around pymongo functions
+    """
+    
     def __init__(self, conf_path):
         self._load_config(conf_path)
         
