@@ -4,13 +4,17 @@ import datetime
 patterns = {
     'name': r"^[A-Za-z\'\-\s]{2,}$",
     'email': r"^[\w\.\+&~-]+@([\w-]+\.{1})+[a-zA-Z]{2,4}$",
-    'plain_text': r".{2,}"
+    'plain_text': r".{2,}",
+    'username': r".{2,}",
+    'password': r".{2,}",
 }
 
 error_strings = {
     'name': "Please enter a valid name",
     'email': "Please enter a valid email",
-    'plain_text': "Please enter valid text"
+    'plain_text': "Please enter valid text",
+    'username': "Please enter a valid username",
+    'password': "Please enter a valid password",
 }
 
 class BaseModel(object):
@@ -117,5 +121,33 @@ class PostModel(BaseModel):
     @content.setter
     def content(self, value):
         self.set_field('content', 'plain_text', value)
+        
+
+class AdminModel(BaseModel):
+    _username = None
+    _password = None
+    
+    def compile(self):
+        self._compiled['document'] = {
+            'username': self._username,
+            'password': self._password
+        }
+        return self._compiled
+    
+    @property
+    def username(self):
+        return self._username
+    
+    @username.setter
+    def username(self, value):
+        self.set_field('username', 'username', value)
+        
+    @property
+    def password(self):
+        return self._password
+    
+    @password.setter
+    def password(self, value):
+        self.set_field('password', 'password', value)
         
         

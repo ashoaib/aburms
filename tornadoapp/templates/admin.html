@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> -->
+		<title>abur.ms - admin</title>
+		<link href="{{ static_url('css/admin.css') }}" type="text/css" rel="stylesheet">
+		<!-- Fix for IE8 and below -->
+		<script>
+			document.createElement("header");
+			document.createElement("footer");
+			document.createElement("nav");
+		</script>
+	</head>
+	<body>
+		<div id="container">
+			<h1>admin</h1>
+			<form id="loginForm" name="loginForm" action="{{ site_root('admin/login') }}" method="post">
+				{% module xsrf_form_html() %}
+				<input class="input" type="text" name="username" id="username" placeholder="username" autocomplete="off">
+				<input class="input" type="password" name="password" id="password" placeholder="password">
+				<input class="button" type="submit" name="login" value="login">
+			</form>
+		</div>
+	</body>
+</html>

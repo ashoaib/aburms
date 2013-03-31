@@ -1,0 +1,52 @@
+/*
+ * COMMON VARIABLES
+ */
+
+/* Colours */
+$_yellow: #ffef00;
+$_gray: #666666;
+$_white: #ffffff;
+
+/* Widths */
+$container-width: 1000px;
+$header-height: 200px;
+$nav-width: 376px;
+
+/* Mixins */
+@mixin center-div {
+	position: relative;
+	margin: 0 auto;
+}
+
+/*
+ * DESKTOP CSS
+ */
+
+/* main.scss */
+html {
+	font-family: 'Helvetica', 'Arial', sans-serif;
+	background: $_gray;
+}
+
+body.error {
+	text-align: center;
+	
+	h1 {
+		padding: 120px 0 0 0;
+		font-size: 120px;
+		color: $_yellow;
+		font-weight: 700;
+	}
+	
+	h2 {
+		padding-top: 50px;
+		font-size: 60px;
+		color: $_white;
+		font-weight: 100;
+	}
+}
+
+#container {
+	width: $container-width;
+	@include center-div; 
+}

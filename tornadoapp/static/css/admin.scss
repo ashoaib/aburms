@@ -1,0 +1,42 @@
+/* Imports */
+@import "reset";
+@import "vars";
+
+#container {
+	padding-top: 50px;
+}
+
+h1 {
+	font-size: 120px;
+	font-weight: bold;
+	color: $_yellow;
+	text-align: center;
+}
+
+#loginForm {
+	width: 50%;
+	margin: 50px auto 0 auto;
+	text-align: center;
+	
+	.input {
+		text-align: center;
+		display: block;
+		width: 80%;
+		font-size: 50px;
+		color: $_white;
+		font-weight: 100;
+		padding: 10px;
+		margin: 20px auto;
+		-webkit-box-sizing: content-box;
+		-moz-box-sizing: content-box;
+		box-sizing: content-box;
+	}
+	
+	.button {
+		font-size: 50px;
+		color: $_yellow;
+		padding: 20px;
+		font-weight: 100;
+		cursor: pointer;
+	}
+}

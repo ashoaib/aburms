@@ -4,6 +4,8 @@ import models
 from datetime import datetime
 
 class BaseHandler(tornado.web.RequestHandler):
+    """Base handler containing methods to be used by subclassed handlers"""
+    
     def write_error(self, status_code, **kwargs):
         self.render('error.html')
     
@@ -17,21 +19,29 @@ class BaseHandler(tornado.web.RequestHandler):
     
 
 class IndexHandler(BaseHandler):
+    """Handler for /|/about"""
+    
     def get(self):
         self.render('index.html')
 
 
 class WorkHandler(BaseHandler):
+    """Handler for /work"""
+    
     def get(self):
         self.render('work.html')
 
 
 class StuffHandler(BaseHandler):
+    """Handler for /stuff"""
+    
     def get(self):
         self.render('stuff.html')
 
 
 class ContactHandler(BaseHandler):
+    """Handler for /contact"""
+    
     def get(self):
         self.render('contact.html', errors=dict())
     
@@ -49,25 +59,36 @@ class ContactHandler(BaseHandler):
     
 
 class AdminHandler(BaseHandler):
+    """Base admin handler for /admin, to be subclassed"""
+    
     @tornado.web.authenticated
     def get(self):
-        self.write('hello admin')
+        self.render('admin.html')
     
     def get_current_user(self):
-        return True
+        return False
         
         
 class AdminLoginHandler(BaseHandler):
+    """Admin login handler for /admin/login"""
+    
     def get(self):
-        self.write('login')
+        self.render('admin.html')
+        
+    def post(self):
+        self.write(self.get_argument('password'))
         
         
 class AdminLogoutHandler(BaseHandler):
+    """Admin logout handler for /admin/logout"""
+    
     def get(self):
         self.write('logout')
 
 
 class ErrorHandler(BaseHandler):
+    """Handler for catching url routes that don't fall into handlers above"""
+    
     def get(self):
         raise tornado.web.HTTPError(404)
 
