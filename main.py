@@ -46,8 +46,8 @@ class TornadoApp(tornado.web.Application):
         tornado.web.Application.__init__(self, _handlers, **_settings)
         
     def set_db(self, db_conf_path):
-        pass
-        #self.db = tornadoapp.mongodb.MongoDB(db_conf_path)
+        #pass
+        self.db = tornadoapp.mongodb.MongoDB(db_conf_path)
         
 
 def main():
