@@ -1,5 +1,5 @@
 import tornado.ioloop
-import tornado.options 
+import tornado.options
 import tornado.web
 import tornadoapp.mongodb
 
@@ -29,26 +29,26 @@ class TornadoApp(tornado.web.Application):
     The main application class. It uses the ConfigManager to retrieve handlers
     and application settings to pass to the application instance.
     """
-    
+
     def __init__(self, env):
         cm = config_manager.ConfigManager(env)
         _handlers = cm.get_handlers()
         _settings = cm.get_settings()
-        
+
         if 'db_conf_path' in _settings:
             self.set_db(_settings['db_conf_path'])
         else:
             raise KeyError('db_conf_path not found in settings')
-        
+
         if 'port' in _settings:
             tornado.options.options.port = _settings['port']
-         
+
         tornado.web.Application.__init__(self, _handlers, **_settings)
-        
+
     def set_db(self, db_conf_path):
-        #pass
-        self.db = tornadoapp.mongodb.MongoDB(db_conf_path)
-        
+        pass
+        # self.db = tornadoapp.mongodb.MongoDB(db_conf_path)
+
 
 def main():
     tornado.options.parse_command_line()
